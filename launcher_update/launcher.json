@@ -1,7 +1,7 @@
 {
   "extfiles": [
     {
-      "path": "artifacts\\DarkLauncher_jar\\DarkLauncher.jar",
+      "path": "DarkLauncher.jar",
       "downloadURL": "https://github.com/DarkLash1/DarkLauncher/raw/refs/heads/main/out/artifacts/DarkLauncher_jar/DarkLauncher.jar",
       "sha1": "8b76970684fca6f6e4fea628a3830d6b140250c7",
       "size": 66077512

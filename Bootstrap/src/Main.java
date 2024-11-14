@@ -37,7 +37,7 @@ public class Main {
     }
 
     public static void doUpdate() throws Exception {
-        FlowUpdater updater = new FlowUpdater.FlowUpdaterBuilder().withExternalFiles(ExternalFile.getExternalFilesFromJson("https://raw.githubusercontent.com/DarkLash1/ToNightS3/refs/heads/main/launcher.json?token=GHSAT0AAAAAACW3ZNQYP7LCL7HBB253LPTAZZWNHGQ")).build();
+        FlowUpdater updater = new FlowUpdater.FlowUpdaterBuilder().withExternalFiles(ExternalFile.getExternalFilesFromJson("https://raw.githubusercontent.com/DarkLash1/DarkLauncher/refs/heads/main/launcher_update/launcher.json?token=GHSAT0AAAAAACW3ZNQZC4CPZZ4QH5IAC2AYZZWQ7EA")).build();
         updater.update(Paths.get(path + "/launchers"));
     }
 
