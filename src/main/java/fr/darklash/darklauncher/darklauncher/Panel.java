@@ -20,8 +20,14 @@ public class Panel extends JPanel implements SwingerEventListener {
     private STexturedButton close = new STexturedButton(Frame.getBufferedImage("images/croix.png"));
     private RamSelector ramSelector = new RamSelector(Frame.getRamFile());
 
+    private JComboBox<String> versionComboBox;
+
     public Panel() throws IOException {
         this.setLayout(null);
+
+        versionComboBox = new JComboBox<>(new String[] {"1.21", "1.20", "1.19", "1.18"});
+        versionComboBox.setBounds(200, 450, 150, 30);
+        this.add(versionComboBox);
 
         play.setBounds(109, 109);
         play.setLocation(200, 490);
@@ -58,7 +64,8 @@ public class Panel extends JPanel implements SwingerEventListener {
         } else if (swingerEvent.getSource() == play) {
             ramSelector.save();
             try {
-                Launcher.update();
+                String selectedVersion = (String) versionComboBox.getSelectedItem();
+                Launcher.update(selectedVersion);
             } catch (Exception e) {
                 Launcher.getReporter().catchError(e, "Impossible de mettre à jour !");
             }
@@ -76,5 +83,9 @@ public class Panel extends JPanel implements SwingerEventListener {
 
     public RamSelector getRamSelector() {
         return ramSelector;
+    }
+
+    public JComboBox<String> getVersionComboBox() {
+        return versionComboBox;
     }
 }

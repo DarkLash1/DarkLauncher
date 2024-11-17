@@ -29,6 +29,7 @@ public class Main {
         launcherFile.mkdirs();
         showSplashScreen();
         doUpdate();
+        launchLauncher();
     }
 
     public static void showSplashScreen() throws IOException {

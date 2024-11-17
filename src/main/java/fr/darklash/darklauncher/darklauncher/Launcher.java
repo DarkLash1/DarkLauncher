@@ -1,7 +1,6 @@
 package fr.darklash.darklauncher.darklauncher;
 
 import fr.flowarg.flowupdater.FlowUpdater;
-import fr.flowarg.flowupdater.download.json.CurseFileInfo;
 import fr.flowarg.flowupdater.utils.ModFileDeleter;
 import fr.flowarg.flowupdater.utils.UpdaterOptions;
 import fr.flowarg.flowupdater.versions.VanillaVersion;
@@ -40,21 +39,19 @@ public class Launcher {
         authInfos = new AuthInfos(result.getProfile().getName(), result.getAccessToken(), result.getProfile().getId());
     }
 
-    public static void update() throws Exception {
-        VanillaVersion vanillaVersion = new VanillaVersion.VanillaVersionBuilder().withName("1.21").build();
+    public static void update(String version) throws Exception {
+        VanillaVersion vanillaVersion = new VanillaVersion.VanillaVersionBuilder().withName(version).build();
         UpdaterOptions options = new UpdaterOptions.UpdaterOptionsBuilder().build();
-        List<CurseFileInfo> curseFileInfos = new ArrayList<>();
-        curseFileInfos.add(new CurseFileInfo(306612, 5605482));
-        curseFileInfos.add(new CurseFileInfo(238222, 5846878));
-        FabricVersion fabricVersion = new FabricVersionBuilder().withCurseMods(curseFileInfos).withFabricVersion("0.16.9").withFileDeleter(new ModFileDeleter(true)).build();
+        FabricVersion fabricVersion = new FabricVersionBuilder().withFabricVersion("0.16.9").withFileDeleter(new ModFileDeleter(true)).build();
         FlowUpdater updater = new FlowUpdater.FlowUpdaterBuilder().withVanillaVersion(vanillaVersion).withUpdaterOptions(options).withModLoaderVersion(fabricVersion).build();
         updater.update(path);
     }
 
     public static void launch() throws Exception {
+        String selectedVersion = (String) Frame.getInstance().getPanel().getVersionComboBox().getSelectedItem();
         NoFramework noFramework = new NoFramework(path, authInfos, GameFolder.FLOW_UPDATER);
         noFramework.getAdditionalVmArgs().addAll(List.of(Frame.getInstance().getPanel().getRamSelector().getRamArguments()));
-        noFramework.launch("1.21", "0.16.9", NoFramework.ModLoader.FABRIC);
+        noFramework.launch(selectedVersion, "0.16.9", NoFramework.ModLoader.FABRIC);
     }
 
     public static CrashReporter getReporter() {
