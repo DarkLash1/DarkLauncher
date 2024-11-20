@@ -15,7 +15,6 @@ import fr.theshark34.openlauncherlib.util.CrashReporter;
 
 import java.io.File;
 import java.nio.file.Path;
-import java.util.ArrayList;
 import java.util.List;
 
 public class Launcher {

@@ -26,11 +26,11 @@ public class Panel extends JPanel implements SwingerEventListener {
         this.setLayout(null);
 
         versionComboBox = new JComboBox<>(new String[] {"1.21", "1.20", "1.19", "1.18"});
-        versionComboBox.setBounds(200, 450, 150, 30);
+        versionComboBox.setBounds(425, 360, 150, 30);
         this.add(versionComboBox);
 
         play.setBounds(109, 109);
-        play.setLocation(200, 490);
+        play.setLocation(445, 245);
         play.addEventListener(this);
         this.add(play);
 
@@ -40,12 +40,12 @@ public class Panel extends JPanel implements SwingerEventListener {
         this.add(microsoft);
 
         settings.setBounds(64, 64);
-        settings.setLocation(10, 10);
+        settings.setLocation(0, 0);
         settings.addEventListener(this);
         this.add(settings);
 
         close.setBounds(64, 64);
-        close.setLocation(450, 10);
+        close.setLocation(936, 0);
         close.addEventListener(this);
         this.add(close);
     }

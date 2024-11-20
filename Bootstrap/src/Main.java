@@ -33,7 +33,7 @@ public class Main {
     }
 
     public static void showSplashScreen() throws IOException {
-        SplashScreen screen = new SplashScreen("DarkLauncher Updater", ImageIO.read(Objects.requireNonNull(Main.class.getResourceAsStream("resources/icon.png"))));
+        SplashScreen screen = new SplashScreen("DarkLauncher Updater", ImageIO.read(Objects.requireNonNull(Main.class.getResourceAsStream("resources/tonight.png"))));
         screen.displayFor(5000L);
     }
 
