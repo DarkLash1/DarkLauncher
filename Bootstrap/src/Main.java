@@ -53,5 +53,14 @@ public class Main {
         ExternalLauncher launcher = new ExternalLauncher(profile);
 
         launcherProcess = launcher.launch();
+
+        new Thread(() -> {
+            try {
+                launcherProcess.waitFor();
+                System.exit(0);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }).start();
     }
 }
