@@ -4,6 +4,7 @@ import club.minnced.discord.rpc.DiscordEventHandlers;
 import club.minnced.discord.rpc.DiscordRPC;
 import club.minnced.discord.rpc.DiscordRichPresence;
 import fr.darklash.darklauncher.darklauncher.utils.Animation;
+import fr.litarvan.openauth.microsoft.MicrosoftAuthenticationException;
 import fr.theshark34.openlauncherlib.util.Saver;
 import fr.theshark34.swinger.util.WindowMover;
 
@@ -14,6 +15,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Objects;
 
 public class Frame extends JFrame {
 
@@ -50,6 +52,12 @@ public class Frame extends JFrame {
         if (!saverFile.exists()) {
             saverFile.createNewFile();
         }
+        try {
+            Launcher.auth();
+            System.out.println("Connexion réussie !");
+        } catch (MicrosoftAuthenticationException e) {
+            System.out.println("Connexion automatique échouée, bouton Microsoft requis.");
+        }
         instance = new Frame();
         rpc();
     }
@@ -69,12 +77,12 @@ public class Frame extends JFrame {
 
     public static Image getImage(String file) throws IOException {
         InputStream inputStream = Frame.getInstance().getClass().getClassLoader().getResourceAsStream(file);
-        return ImageIO.read(inputStream);
+        return ImageIO.read(Objects.requireNonNull(inputStream));
     }
 
     public static BufferedImage getBufferedImage(String file) throws IOException {
         InputStream inputStream = Frame.getInstance().getClass().getClassLoader().getResourceAsStream(file);
-        return ImageIO.read(inputStream);
+        return ImageIO.read(Objects.requireNonNull(inputStream));
     }
 
     public static Frame getInstance() {

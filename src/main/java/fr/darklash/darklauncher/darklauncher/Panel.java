@@ -34,10 +34,12 @@ public class Panel extends JPanel implements SwingerEventListener {
         play.addEventListener(this);
         this.add(play);
 
-        microsoft.setBounds(100, 100);
-        microsoft.setLocation(100, 100);
-        microsoft.addEventListener(this);
-        this.add(microsoft);
+        if (Launcher.getAuthInfos() == null) {
+            microsoft.setBounds(100, 100);
+            microsoft.setLocation(100, 100);
+            microsoft.addEventListener(this);
+            this.add(microsoft);
+        }
 
         settings.setBounds(64, 64);
         settings.setLocation(0, 0);
@@ -77,7 +79,9 @@ public class Panel extends JPanel implements SwingerEventListener {
         } else if (swingerEvent.getSource() == settings) {
             ramSelector.display();
         } else if (swingerEvent.getSource() == close) {
-            Animation.fadeOutFrame(Frame.getInstance(), 30, () -> System.exit(0));
+            Animation.fadeOutFrame(Frame.getInstance(), 30, () -> {
+                System.exit(0);
+            });
         }
     }
 

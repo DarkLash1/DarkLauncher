@@ -60,4 +60,8 @@ public class Launcher {
     public static Path getPath() {
         return path;
     }
+
+    public static AuthInfos getAuthInfos() {
+        return authInfos;
+    }
 }

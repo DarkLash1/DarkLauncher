@@ -23,6 +23,7 @@ public class Main {
     public static File crashFile = new File(path.toFile(), "crashes");
     public static File launcherFile = new File(String.valueOf(path), "launchers");
     private static CrashReporter reporter = new CrashReporter(String.valueOf(crashFile), path);
+    private static Process launcherProcess;
 
     public static void main(String[] args) throws Exception {
         crashFile.mkdirs();
@@ -51,6 +52,6 @@ public class Main {
         ExternalLaunchProfile profile = new ExternalLaunchProfile("fr.darklash.darklauncher.darklauncher.Frame", constructor.make());
         ExternalLauncher launcher = new ExternalLauncher(profile);
 
-        Process p = launcher.launch();
+        launcherProcess = launcher.launch();
     }
 }
